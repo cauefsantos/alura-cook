@@ -5,7 +5,7 @@
   import Titulo from 'components/Titulo.svelte';
 
   import categorias from '$lib/json/categorias.json';
-    import Categoria from 'components/Categoria.svelte';
+  import Categoria from 'components/Categoria.svelte';
 </script>
 
 <svelte:head>

@@ -12,7 +12,7 @@
     class="categoria-imagem"
   >
 
-  <h3 class="categoria-nome">categoria.nome</h3>
+  <h3 class="categoria-nome">{categoria.nome}</h3>
 
   <ul class="ingredientes">
     {#each categoria.ingredientes as ingrediente (ingrediente)}
