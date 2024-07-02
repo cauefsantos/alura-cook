@@ -3,9 +3,11 @@
   import Cabecalho from 'components/Cabecalho.svelte';
   import MinhaLista from 'components/MinhaLista.svelte';
   import Titulo from 'components/Titulo.svelte';
+  import Tag from 'components/Tag.svelte';
 
   import categorias from '$lib/json/categorias.json';
   import Categoria from 'components/Categoria.svelte';
+  import Rodape from 'components/Rodape.svelte';
 
   let minhaLista: string[] = [];
 
@@ -56,8 +58,16 @@
           </li>
         {/each}
       </ul>
+
+      <div class="buscar-receitas">
+        <a href="/receitas">
+          <Tag ativa tamanho="lg">Buscar Receitas</Tag>
+        </a>
+      </div>
     </main>
   </div>
+
+  <Rodape />
 </div>
 
 <style>
@@ -99,5 +109,10 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
+  }
+
+  .buscar-receitas {
+    display: flex;
+    justify-content: center;
   }
 </style>
