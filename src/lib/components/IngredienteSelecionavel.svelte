@@ -4,12 +4,10 @@
 
   export let ingrediente: string;
 
-  let selecionado = false;
+  $: selecionado = $minhaLista.includes(ingrediente);
 
   function aoClicar() {
-    selecionado = !selecionado;
-
-    if (selecionado) {
+    if (!selecionado) {
       minhaLista.adicionarIngrediente(ingrediente);
     } else {
       minhaLista.removerIngrediente(ingrediente);
