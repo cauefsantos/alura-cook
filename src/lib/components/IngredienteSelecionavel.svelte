@@ -10,11 +10,9 @@
     selecionado = !selecionado;
 
     if (selecionado) {
-      $minhaLista = [...$minhaLista, ingrediente];
+      minhaLista.adicionarIngrediente(ingrediente);
     } else {
-      $minhaLista = $minhaLista.filter(
-        (item) => item !== ingrediente
-    );
+      minhaLista.removerIngrediente(ingrediente);
     }
   }
 </script>
