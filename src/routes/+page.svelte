@@ -1,13 +1,20 @@
 <script lang="ts">
   import '../app.css';
-  import MinhaLista from 'components/MinhaLista.svelte';
   import Titulo from 'components/Titulo.svelte';
   import Tag from 'components/Tag.svelte';
   import Categoria from 'components/Categoria.svelte';
 
   import categorias from '$lib/json/categorias.json';
-
+  import { beforeNavigate } from '$app/navigation';
   import { minhaLista } from '$lib/stores/minhaLista';
+
+  $: listaVazia = $minhaLista.length === 0;
+
+  beforeNavigate((navigation) => {
+    if (listaVazia && navigation?.to?.url.pathname === '/receitas') {
+      navigation.cancel();
+    }
+  });
 </script>
 
 <svelte:head>
@@ -34,7 +41,11 @@
 
   <div class="buscar-receitas">
     <a href="/receitas">
-      <Tag ativa tamanho="lg">Buscar Receitas</Tag>
+      <Tag 
+        ativa
+        tamanho="lg"
+        desabilitada={listaVazia}
+      >Buscar Receitas</Tag>
     </a>
   </div>
 </main>
