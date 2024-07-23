@@ -1,7 +1,48 @@
+<script>
+  import Titulo from "components/compartilhados/Titulo.svelte";
+  import Receita from "components/paginas/receitas/Receita.svelte";
+
+</script>
 <svelte:head>
   <title>Alura Cook | Receitas</title>
 </svelte:head>
 
-<p>Aqui vêm as receitas...</p>
+<main>
+  <Titulo tag="h1">Receitas</Titulo>
 
-<a href="/">Voltar para a página principal</a>
+    <div class="info">
+      <p class="verde">Resultados encontrados: 0</p>
+
+      <p>Veja as opções de receiras que encontramos com os ingredientes que você tem por aí!</p>
+    </div>
+
+    <ul class="receitas">
+      <li>
+        <Receita />
+      </li>
+    </ul>
+</main>
+
+<style>
+  .info {
+    margin-bottom: 3.375rem;
+  }
+
+  .info > p {
+    line-height: 2rem;
+  }
+
+  .info > p.verde {
+    color: var(--verde);
+  }
+
+  .receitas {
+    text-align: start;
+    margin-bottom: 3.75rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+</style>

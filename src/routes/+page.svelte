@@ -1,8 +1,8 @@
 <script lang="ts">
   import '../app.css';
-  import Titulo from 'components/Titulo.svelte';
-  import Tag from 'components/Tag.svelte';
-  import Categoria from 'components/Categoria.svelte';
+  import Titulo from 'components/compartilhados/Titulo.svelte';
+  import Tag from 'components/compartilhados/Tag.svelte';
+  import Categoria from 'components/paginas/index/Categoria.svelte';
 
   import categorias from '$lib/json/categorias.json';
   import { beforeNavigate } from '$app/navigation';
