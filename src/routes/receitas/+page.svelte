@@ -2,6 +2,14 @@
   import Titulo from "components/compartilhados/Titulo.svelte";
   import Receita from "components/paginas/receitas/Receita.svelte";
 
+  import receitas from "$lib/json/receitas.json";
+  import { minhaLista } from "$lib/stores/minhaLista";
+
+  $: receitasFiltradas = receitas.filter((receita) => (
+    receita.ingredientes.every((ingrediente) => (
+      $minhaLista.includes(ingrediente)
+    ))
+  ));
 </script>
 <svelte:head>
   <title>Alura Cook | Receitas</title>
@@ -11,15 +19,21 @@
   <Titulo tag="h1">Receitas</Titulo>
 
     <div class="info">
-      <p class="verde">Resultados encontrados: 0</p>
+      <p class="verde">Resultados encontrados: {receitasFiltradas.length}</p>
 
-      <p>Veja as opções de receiras que encontramos com os ingredientes que você tem por aí!</p>
+      {#if receitasFiltradas.length}
+        <p>Veja as opções de receiras que encontramos com os ingredientes que você tem por aí!</p>
+      {:else}
+        <p>Ops! Não encontramos nenhuma receita com os ingredientes que você tem por aí :(</p>
+      {/if}
     </div>
 
     <ul class="receitas">
-      <li>
-        <Receita />
-      </li>
+      {#each receitasFiltradas as receita (receita.nome)}
+        <li>
+          <Receita {receita} />
+        </li>
+      {/each}
     </ul>
 </main>
 
